@@ -1,15 +1,42 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import axios from 'axios';
 import './App.css'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { InfoType } from './types/types';
+import Card from './components/Card';
 
-function App() {
-  
+export default function App() {
+
+  const queryClient = new QueryClient();
 
   return (
-    <>
-      test
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Page />
+    </QueryClientProvider>
   )
 }
 
-export default App
+function Page() {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['valorantData'],
+    queryFn: () =>
+      axios
+          .get('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
+          .then((res) => res.data)
+  })
+
+  if (isPending) return 'Loading...'
+
+  if (error) return 'An error has occurred: ' + error.message
+
+  console.log(data)
+  return (
+    <div className='grid'>
+        {data.data.map((info: InfoType) => {
+          return (
+          <Card key={info.uuid} Info={info} />
+          )
+        })}
+    </div>
+  )
+}
+

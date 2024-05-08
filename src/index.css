@@ -1,4 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 :root {
-  font-family: Inter, sans-serif;
+  font-family: "JetBrains Mono", monospace;
+  --black: #101010;
+  --white: #FFFFFF;
 }
 
+.grid > .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card_main {
+  border-left: 2px solid var(--black);
+  border-right: 2px solid var(--black);
+  border-top: 2px solid var(--black);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+.card_infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card_infos > .card_abilities {
+  background-color: var(--black);
+  border-top-left-radius: 10px;
+  width: 3.5rem;
+  height: 13rem;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+
+}
+
+.first_abilities, .second_abilities, .third_abilities, .fourth_abilities {
+  width: 40px;
+}
+
+.card_infos > .card_role {
+  background-color: var(--black);
+  border-top-right-radius: 10px;
+  width: 5rem;
+  height: 5rem;
+  border-bottom-left-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+}
+
+.card_role > .role_img {
+  height: 60px;
+}
+
+.agent_img {
+  height: 75vh;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.card_footer {
+  background-color: var(--black);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 2;
+  
+}
+
+.card_footer > .agent_name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  text-align: center;
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+}
+
+@media (max-width: 1080px) { 
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 820px) { 
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (max-width: 430px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
