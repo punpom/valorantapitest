@@ -1,5 +1,4 @@
 import axios from 'axios';
-import './App.css'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { InfoType } from './types/types';
 import Card from './components/Card';
