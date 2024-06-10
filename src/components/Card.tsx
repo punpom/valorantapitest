@@ -2,16 +2,15 @@ import { useState, useEffect } from 'react';
 import { InfoType } from '../types/types'
 
 interface Props {
-    Info: InfoType
+    info: InfoType
 }
 
-function Card(props: Props) {
-    const { Info } = props
+const Card: React.FC<Props> = ({ info }) => {
     const [color1, setColor1] = useState("")
     const [color2, setColor2] = useState("")
 
     useEffect(() => {
-        switch (Info.displayName) {
+        switch (info.displayName) {
             case "Gekko":
                 setColor1("#3A2656");
                 setColor2("#3A7233");
@@ -109,28 +108,28 @@ function Card(props: Props) {
                 setColor2("#1E3344");
                 break;
         }
-    }, [Info.displayName]);
+    }, [info.displayName]);
 
     return (
         <div className="card">
             <div className="card_main" style={{backgroundImage: `linear-gradient(180deg, ${color1} 31%, ${color2} 72%)`}}> 
-                <div className="card_background" style={{backgroundImage: `url(${Info.background})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: "100%"}}>
+                <div className="card_background" style={{backgroundImage: `url(${info.background})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: "100%"}}>
                     <div className="card_infos">
                         <div className="card_abilities">
-                            <img className='first_abilities' alt='first ability of the agent' src={Info.abilities[0].displayIcon}/> 
-                            <img className='second_abilities' alt='first ability of the agent' src={Info.abilities[1].displayIcon}/> 
-                            <img className='third_abilities' alt='first ability of the agent' src={Info.abilities[2].displayIcon}/> 
-                            <img className='fourth_abilities' alt='first ability of the agent' src={Info.abilities[3].displayIcon}/> 
+                            <img className='first_abilities' alt='first ability of the agent' src={info.abilities[0].displayIcon}/> 
+                            <img className='second_abilities' alt='first ability of the agent' src={info.abilities[1].displayIcon}/> 
+                            <img className='third_abilities' alt='first ability of the agent' src={info.abilities[2].displayIcon}/> 
+                            <img className='fourth_abilities' alt='first ability of the agent' src={info.abilities[3].displayIcon}/> 
                         </div>
                         <div className="card_role">
-                            <img className="role_img" alt="role of the agent" src={Info.role.displayIcon}/>
+                            <img className="role_img" alt="role of the agent" src={info.role.displayIcon}/>
                         </div>
                     </div>
-                    <img className="agent_img" src={Info.fullPortraitV2}/> 
+                    <img className="agent_img" src={info.fullPortraitV2}/> 
                 </div>
             </div>
             <div className="card_footer">
-                <p className='agent_name'>{Info.displayName.toUpperCase()}</p>
+                <p className='agent_name'>{info.displayName.toUpperCase()}</p>
             </div>
             <div className="card_blur">
                 <button className="card_button">VIEW</button>

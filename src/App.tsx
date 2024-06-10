@@ -32,7 +32,7 @@ function Page() {
     <div className='grid'>
         {data.data.map((info: InfoType) => {
           return (
-          <Card key={info.uuid} Info={info} />
+          <Card key={info.uuid} info={info} />
           )
         })}
     </div>
