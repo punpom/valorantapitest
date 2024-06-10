@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { InfoType } from '../types/types';
 import { useModalStore } from '../store';
 import { getColorSelector } from '../utils/colorSelector';
@@ -14,16 +14,35 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
 
     const [color1, setColor1] = useState("")
     const [color2, setColor2] = useState("")
+    const cardRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
       const { color1, color2 } = getColorSelector(info.displayName);
       setColor1(color1);
       setColor2(color2);
   }, [info.displayName]);
+
   
     return (
       <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content" ref={cardRef} onClick={(e) => e.stopPropagation()} onMouseMove={(e) => {
+        if (cardRef.current) {
+        let rect = cardRef.current.getBoundingClientRect();
+
+        let x = e.clientX - rect.x;
+        let y = e.clientY - rect.y;
+
+        let midCardWidth = rect.width / 2;
+        let midCardHeight = rect.height / 2;
+
+        let angleY = -(x - midCardWidth) / 16;
+        let angleX = (y - midCardHeight) / 16;
+
+        cardRef.current.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1)`;
+
+        }
+        }
+        } onMouseLeave={() => { if (cardRef.current) {cardRef.current.style.transform = "rotateX(0) rotateY(0)"}}}>
           <div className="modal-card">
               <div className="modal-card_main" style={{backgroundImage: `linear-gradient(180deg, ${color1} 31%, ${color2} 72%)`}}> 
                   <div className="modal-card_background" style={{backgroundImage: `url(${info.background})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: "100%"}}>
@@ -44,6 +63,7 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
               <div className="modal-card_footer">
                   <p className='agent_name'>{info.displayName.toUpperCase()}</p>
               </div>
+
           </div>
       </div>
   </div>
