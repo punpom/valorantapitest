@@ -10,7 +10,6 @@ function Card(props: Props) {
     const [color1, setColor1] = useState("")
     const [color2, setColor2] = useState("")
 
-
     useEffect(() => {
         switch (Info.displayName) {
             case "Gekko":
@@ -109,34 +108,35 @@ function Card(props: Props) {
                 setColor1("#557F8C");
                 setColor2("#1E3344");
                 break;
-
         }
     }, [Info.displayName]);
-
 
     return (
         <div className="card">
             <div className="card_main" style={{backgroundImage: `linear-gradient(180deg, ${color1} 31%, ${color2} 72%)`}}> 
                 <div className="card_background" style={{backgroundImage: `url(${Info.background})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: "100%"}}>
-                <div className="card_infos">
-                    <div className="card_abilities">
-                        <img className='first_abilities' alt='first ability of the agent' src={Info.abilities[0].displayIcon}/> 
-                        <img className='second_abilities' alt='first ability of the agent' src={Info.abilities[1].displayIcon}/> 
-                        <img className='third_abilities' alt='first ability of the agent' src={Info.abilities[2].displayIcon}/> 
-                        <img className='fourth_abilities' alt='first ability of the agent' src={Info.abilities[3].displayIcon}/> 
-                    </div>
-                    <div className="card_role">
-                        <img className="role_img" alt="role of the agent" src={Info.role.displayIcon}/>
-                    </div>
-                    </div>
-                        <img className="agent_img" src={Info.fullPortraitV2}/> 
+                    <div className="card_infos">
+                        <div className="card_abilities">
+                            <img className='first_abilities' alt='first ability of the agent' src={Info.abilities[0].displayIcon}/> 
+                            <img className='second_abilities' alt='first ability of the agent' src={Info.abilities[1].displayIcon}/> 
+                            <img className='third_abilities' alt='first ability of the agent' src={Info.abilities[2].displayIcon}/> 
+                            <img className='fourth_abilities' alt='first ability of the agent' src={Info.abilities[3].displayIcon}/> 
                         </div>
-                         </div>
-                    <div className="card_footer">
-                    <p className='agent_name'>{Info.displayName.toUpperCase()}</p>
+                        <div className="card_role">
+                            <img className="role_img" alt="role of the agent" src={Info.role.displayIcon}/>
+                        </div>
+                    </div>
+                    <img className="agent_img" src={Info.fullPortraitV2}/> 
+                </div>
+            </div>
+            <div className="card_footer">
+                <p className='agent_name'>{Info.displayName.toUpperCase()}</p>
+            </div>
+            <div className="card_blur">
+                <button className="card_button">VIEW</button>
             </div>
         </div>
     )
 }
 
-export default Card
+export default Card;
