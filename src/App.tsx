@@ -2,6 +2,7 @@ import axios from 'axios';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { InfoType } from './types/types';
 import Card from './components/Card';
+import ConnectedModal from './components/Modal';
 
 export default function App() {
 
@@ -29,12 +30,15 @@ function Page() {
 
   console.log(data)
   return (
+    <div>
     <div className='grid'>
         {data.data.map((info: InfoType) => {
           return (
-          <Card key={info.uuid} info={info} />
+          <Card key={info.uuid} info={info}/>
           )
         })}
+    </div>
+      <ConnectedModal/>
     </div>
   )
 }
