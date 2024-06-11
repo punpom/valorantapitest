@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import { InfoType } from '../types/types';
 import { useModalStore } from '../store';
 import { getColorSelector } from '../utils/colorSelector';
@@ -10,21 +10,41 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
-    if(!isVisible || !info) return null;
-
-    const [color1, setColor1] = useState("")
-    const [color2, setColor2] = useState("")
-    const cardRef = useRef<HTMLInputElement | null>(null);
+    const [color1, setColor1] = useState("");
+    const [color2, setColor2] = useState("");
+    const cardRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-      const { color1, color2 } = getColorSelector(info.displayName);
-      setColor1(color1);
-      setColor2(color2);
-  }, [info.displayName]);
+        if (info) {
+            const { color1, color2 } = getColorSelector(info.displayName);
+            setColor1(color1);
+            setColor2(color2);
+        }
+    }, [info]);
 
-  
+    if (!isVisible || !info) return null;
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (cardRef.current) {
+            const rect = cardRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.x;
+            const y = e.clientY - rect.y;
+            const midCardWidth = rect.width / 2;
+            const midCardHeight = rect.height / 2;
+            const angleY = -(x - midCardWidth) / 16;
+            const angleX = (y - midCardHeight) / 16;
+            cardRef.current.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1)`;
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (cardRef.current) {
+            cardRef.current.style.transform = "rotateX(0) rotateY(0)";
+        }
+    };
+
     return (
-      <div className="modal-backdrop" onClick={onClose}>
+        <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-content" ref={cardRef} onClick={(e) => e.stopPropagation()} onMouseMove={(e) => {
         if (cardRef.current) {
         let rect = cardRef.current.getBoundingClientRect();
@@ -67,14 +87,12 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
           </div>
       </div>
   </div>
-  )
-}
+    );
+};
 
 const ConnectedModal: React.FC = () => {
-  const { isVisible, selectedInfo, closeModal } = useModalStore();
-  console.log(isVisible)
-  return <Modal isVisible={isVisible} onClose={closeModal} info={selectedInfo} />
-
-}
+    const { isVisible, selectedInfo, closeModal } = useModalStore();
+    return <Modal isVisible={isVisible} onClose={closeModal} info={selectedInfo} />;
+};
 
 export default ConnectedModal;
