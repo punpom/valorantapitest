@@ -45,24 +45,7 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
 
     return (
         <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-content" ref={cardRef} onClick={(e) => e.stopPropagation()} onMouseMove={(e) => {
-        if (cardRef.current) {
-        let rect = cardRef.current.getBoundingClientRect();
-
-        let x = e.clientX - rect.x;
-        let y = e.clientY - rect.y;
-
-        let midCardWidth = rect.width / 2;
-        let midCardHeight = rect.height / 2;
-
-        let angleY = -(x - midCardWidth) / 16;
-        let angleX = (y - midCardHeight) / 16;
-
-        cardRef.current.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1)`;
-
-        }
-        }
-        } onMouseLeave={() => { if (cardRef.current) {cardRef.current.style.transform = "rotateX(0) rotateY(0)"}}}>
+      <div className="modal-content" ref={cardRef} onClick={(e) => e.stopPropagation()} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
           <div className="modal-card">
               <div className="modal-card_main" style={{backgroundImage: `linear-gradient(180deg, ${color1} 31%, ${color2} 72%)`}}> 
                   <div className="modal-card_background" style={{backgroundImage: `url(${info.background})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: "100%"}}>
