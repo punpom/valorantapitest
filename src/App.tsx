@@ -1,45 +1,23 @@
-import axios from 'axios';
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import { InfoType } from './types/types';
-import Card from './components/Card';
-import ConnectedModal from './components/Modal';
+import Navbar from './components/Navbar';
+import { Routes, Route } from "react-router-dom";
+import AgentCards from './pages/AgentCards';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export default function App() {
 
   const queryClient = new QueryClient();
 
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Page />
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <Navbar/>
+          <Routes>
+            <Route>
+              <Route index element={<AgentCards/>} />
+            </Route>
+          </Routes>    
+      </QueryClientProvider>
+    </>
   )
 }
-
-function Page() {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['valorantData'],
-    queryFn: () =>
-      axios
-          .get('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
-          .then((res) => res.data)
-  })
-
-  if (isPending) return 'Loading...'
-
-  if (error) return 'An error has occurred: ' + error.message
-
-  console.log(data)
-  return (
-    <div>
-    <div className='grid'>
-        {data.data.map((info: InfoType) => {
-          return (
-          <Card key={info.uuid} info={info}/>
-          )
-        })}
-    </div>
-      <ConnectedModal/>
-    </div>
-  )
-}
-
