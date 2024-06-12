@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { InfoType } from '../types/types'
+import { AgentType } from '../types/types'
 import { useModalStore } from '../store';
 import { getColorSelector } from '../utils/colorSelector';
 
 
 interface CardProps {
-    info: InfoType
+    info: AgentType
 }
 
 const Card: React.FC<CardProps> = ({ info}) => {
