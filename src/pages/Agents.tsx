@@ -1,18 +1,11 @@
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import { InfoType } from '../types/types';
 import Card from '../components/Card';
 import ConnectedModal from '../components/Modal';
+import { useAgents } from '../hooks/useAgents';
 
 
-export default function AgentCards() {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['valorantData'],
-    queryFn: () =>
-      axios
-          .get('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
-          .then((res) => res.data)
-  })
+export default function Agents() {
+  const { isPending, error, data } = useAgents();
 
   if (isPending) return 'Loading...'
 
