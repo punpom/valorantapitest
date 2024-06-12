@@ -1,16 +1,16 @@
 import { create } from 'zustand';
-import { InfoType } from './types/types';
+import { AgentType } from './types/types';
 
 interface ModelState {
     isVisible: boolean;
-    selectedInfo: InfoType | null;
-    showModal: (info: InfoType) => void;
+    selectedInfo: AgentType | null;
+    showModal: (info: AgentType) => void;
     closeModal: () => void;
 }
 
 export const useModalStore = create<ModelState>((set) => ({
     isVisible: false,
     selectedInfo: null,
-    showModal: (info: InfoType) => set({ isVisible: true, selectedInfo: info}),
+    showModal: (info: AgentType) => set({ isVisible: true, selectedInfo: info}),
     closeModal: () => set({ isVisible: false, selectedInfo: null}),
 }));
