@@ -1,4 +1,4 @@
-import { InfoType } from '../types/types';
+import { AgentType } from '../types/types';
 import Card from '../components/Card';
 import ConnectedModal from '../components/Modal';
 import { useAgents } from '../hooks/useAgents';
@@ -14,7 +14,7 @@ export default function Agents() {
   return (
     <div>
     <div className='grid'>
-        {data.data.map((info: InfoType) => {
+        {data.map((info: AgentType) => {
           return (
           <Card key={info.uuid} info={info}/>
           )

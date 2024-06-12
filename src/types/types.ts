@@ -11,7 +11,7 @@ interface Role {
     displayIcon: string,
 }
 
-export type InfoType = {
+export type AgentType = {
     uuid: string,
     abilities: Ability[],
     background: string,

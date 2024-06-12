@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { InfoType } from '../types/types';
+import { AgentType } from '../types/types';
 import { useModalStore } from '../store';
 import { getColorSelector } from '../utils/colorSelector';
 
 interface ModalProps {
     isVisible: boolean;
     onClose: () => void;
-    info: InfoType | null;
+    info: AgentType | null;
 }
 
 const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
