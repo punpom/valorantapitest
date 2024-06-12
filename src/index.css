@@ -232,7 +232,7 @@ body {
 }
 
 .agent_img {
-  height: 75vh;
+  height: 700px;
   position: absolute;
   top: 60%;
   left: 50%;
@@ -253,8 +253,9 @@ body {
   text-align: center;
 }
 
-.navbar {
-  color: var(--white)
+a {
+  color: var(--white);
+  text-decoration: none;
 }
 
 .navbar > ul {
