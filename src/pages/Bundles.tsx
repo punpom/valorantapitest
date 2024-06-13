@@ -1,8 +1,5 @@
-
-function Bundles() {
-  return (
-    <div>Bundles</div>
-  )
+const Bundles: React.FC = () => {
+    return <div>Bundles</div>
 }
 
 export default Bundles

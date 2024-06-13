@@ -1,8 +1,5 @@
-
-function Weapons() {
-  return (
-    <div>Weapons</div>
-  )
+const Weapons: React.FC = () => {
+    return <div>Weapons</div>
 }
 
 export default Weapons

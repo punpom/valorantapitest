@@ -1,0 +1,98 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-content {
+    border-radius: 15px;
+    padding: 1rem;
+    width: 30rem;
+    height: 50rem;
+    perspective: 2000px;
+    transition: transform 0.2s ease;
+}
+
+.modal-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: all 0.15s ease-out;
+}
+
+.modal-card_main {
+    border-left: 2px solid var(--black);
+    border-right: 2px solid var(--black);
+    border-top: 2px solid var(--black);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    height: 45rem;
+    overflow: hidden;
+}
+
+.modal-card_infos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.modal-card_infos > .modal-card_abilities {
+    background-color: var(--black);
+    border-top-left-radius: 10px;
+    width: 3.5rem;
+    height: 13rem;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.modal-card_infos > .modal-card_role {
+    background-color: var(--black);
+    border-top-right-radius: 10px;
+    width: 5rem;
+    height: 5rem;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.modal-card_role > .role_img {
+    height: 60px;
+}
+
+.agent_img {
+    height: 700px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-card_footer {
+    background-color: var(--black);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 2;
+}
+
+.modal-card_footer > .agent_name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+}
