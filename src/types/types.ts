@@ -29,3 +29,15 @@ export type MapType = {
     displayName: string
     stylizedBackgroundImage: string
 }
+
+export type WeaponType = {
+    uuid: string
+    displayName: string
+    displayIcon: string
+}
+
+export type BundleType = {
+    uuid: string
+    displayName: string
+    displayIcon: string
+}

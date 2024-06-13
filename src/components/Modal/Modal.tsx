@@ -119,6 +119,15 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
 
 const ConnectedModal: React.FC = () => {
     const { isVisible, selectedInfo, closeModal } = useModalStore()
+
+    useEffect(() => {
+        document.body.style.overflow = isVisible ? 'hidden' : 'auto'
+
+        return () => {
+            document.body.style.overflow = 'auto'
+        }
+    }, [isVisible])
+
     return (
         <Modal isVisible={isVisible} onClose={closeModal} info={selectedInfo} />
     )
