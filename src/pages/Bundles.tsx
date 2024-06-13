@@ -1,13 +1,14 @@
 import BundleCard from '../components/BundleCard/BundleCard'
 import { useBundles } from '../hooks/useBundles'
 import { BundleType } from '../types/types'
+import Error from '../components/Error/Error'
 
 const Bundles: React.FC = () => {
     const { isPending, error, data } = useBundles()
 
     if (isPending) return 'Loading..'
 
-    if (error) return 'An error occured' + error.message
+    if (error) return <Error message={error.message} />
 
     return (
         <>

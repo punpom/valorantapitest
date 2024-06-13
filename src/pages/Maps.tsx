@@ -1,13 +1,14 @@
 import MapCard from '../components/MapCard/MapCard'
 import { useMaps } from '../hooks/useMaps'
 import { MapType } from '../types/types'
+import Error from '../components/Error/Error'
 
 const Maps: React.FC = () => {
     const { isPending, error, data } = useMaps()
 
     if (isPending) return 'Loading..'
 
-    if (error) return 'An error has occured: ' + error.message
+    if (error) return <Error message={error.message} />
 
     return (
         <>
