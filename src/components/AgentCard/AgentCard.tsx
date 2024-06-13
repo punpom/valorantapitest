@@ -31,9 +31,6 @@ const AgentCard: React.FC<AgentCardProps> = ({ info }) => {
                     className="card_background"
                     style={{
                         backgroundImage: `url(${info.background})`,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        height: '100%',
                     }}
                 >
                     <div className="card_infos">

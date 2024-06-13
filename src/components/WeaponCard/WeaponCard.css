@@ -25,7 +25,7 @@
     background-color: var(--black);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    color: white;
+    color: var(--white);
 }
 
 .weaponcard_footer > .weapon_name {

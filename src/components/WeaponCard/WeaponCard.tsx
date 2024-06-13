@@ -6,6 +6,9 @@ interface WeaponCardProps {
 }
 
 const WeaponCard: React.FC<WeaponCardProps> = ({ info }) => {
+    if (!info.displayIcon || !info.displayName) {
+        return null
+    }
     return (
         <div className="weaponcard">
             <div className="weaponcard_body">

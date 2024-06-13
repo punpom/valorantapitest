@@ -1,0 +1,37 @@
+.bundlecard {
+    display: flex;
+    flex-direction: column;
+}
+
+.bundlecard_body {
+    height: 200px;
+    background-color: rgba(116, 116, 116, 0.137);
+    display: flex;
+    border-top: solid 2px var(--black);
+    border-right: solid 2px var(--black);
+    border-left: solid 2px var(--black);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.bundlecard_background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.bundlecard_footer {
+    background-color: var(--black);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: var(--white);
+}
+
+.bundlecard_footer > .bundle_name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+}

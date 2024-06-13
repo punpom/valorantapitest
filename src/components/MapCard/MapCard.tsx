@@ -6,6 +6,10 @@ interface MapCardProps {
 }
 
 const MapCard: React.FC<MapCardProps> = ({ info }) => {
+    if (!info.displayName || !info.stylizedBackgroundImage) {
+        return null
+    }
+
     return (
         <div className="mapcard">
             <div className="mapcard_main">

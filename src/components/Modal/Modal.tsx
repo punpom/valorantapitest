@@ -64,9 +64,6 @@ const Modal: React.FC<ModalProps> = ({ isVisible, onClose, info }) => {
                             className="modal-card_background"
                             style={{
                                 backgroundImage: `url(${info.background})`,
-                                backgroundSize: '100%',
-                                backgroundRepeat: 'no-repeat',
-                                height: '100%',
                             }}
                         >
                             <div className="modal-card_infos">
