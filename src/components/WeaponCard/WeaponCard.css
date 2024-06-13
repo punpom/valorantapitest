@@ -5,7 +5,7 @@
 
 .weaponcard_body {
     height: 200px;
-    background-color: rgba(116, 116, 116, 0.137);
+    background-color: rgba(157, 121, 180, 0.137);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@
 }
 
 .weaponcard_icon {
-    max-width: 400px;
+    max-width: 20rem;
     max-height: 100px;
 }
 
